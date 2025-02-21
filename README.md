@@ -23,6 +23,7 @@
 
 Requires Python 3.10 or newer.
 ```bash
-git clone 
-cd ddpo-pytorch
-pip install -e .
+git clone https://github.com/zihos/sketcher.git
+cd sketcher
+pip install -e.
+```
