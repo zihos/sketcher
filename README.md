@@ -27,3 +27,8 @@ git clone https://github.com/zihos/sketcher.git
 cd sketcher
 pip install -e.
 ```
+
+## usage
+```bash
+python scripts/train.py --config config/base.py
+```
