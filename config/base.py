@@ -6,14 +6,14 @@ def get_config():
 
     ###### General ######
     # run name for wandb logging and checkpoint saving -- if not provided, will be auto-generated based on the datetime.
-    config.run_name = ""
+    config.run_name = "one prompt"
     # random seed for reproducibility.
     config.seed = 42
     # top-level logging directory for checkpoint saving.
     config.logdir = "logs"
     # number of epochs to train for. each epoch is one round of sampling from the model followed by training on those
     # samples.
-    config.num_epochs = 100
+    config.num_epochs = 201
     # number of epochs between saving model checkpoints.
     config.save_freq = 20
     # number of checkpoints to keep before overwriting old ones.
@@ -35,7 +35,7 @@ def get_config():
     ###### Pretrained Model ######
     config.pretrained = pretrained = ml_collections.ConfigDict()
     # base model to load. either a path to a local directory, or a model name from the HuggingFace model hub.
-    pretrained.model = "runwayml/stable-diffusion-v1-5"
+    pretrained.model = "/home/zio/sketch_generation/finetuned_sd/0117_vae"
     # revision of the model to load.
     pretrained.revision = "main"
 
@@ -52,7 +52,7 @@ def get_config():
     sample.batch_size = 1
     # number of batches to sample per epoch. the total number of samples per epoch is `num_batches_per_epoch *
     # batch_size * num_gpus`.
-    sample.num_batches_per_epoch = 2
+    sample.num_batches_per_epoch = 1
 
     ###### Training ######
     config.train = train = ml_collections.ConfigDict()
@@ -91,13 +91,13 @@ def get_config():
 
     ###### Prompt Function ######
     # prompt function to use. see `prompts.py` for available prompt functions.
-    config.prompt_fn = "imagenet_animals"
+    config.prompt_fn = "simple_animals"
     # kwargs to pass to the prompt function.
     config.prompt_fn_kwargs = {}
 
     ###### Reward Function ######
     # reward function to use. see `rewards.py` for available reward functions.
-    config.reward_fn = "jpeg_compressibility"
+    config.reward_fn = "mplug_tifascore"
 
     ###### Per-Prompt Stat Tracking ######
     # when enabled, the model will track the mean and std of reward on a per-prompt basis and use that to compute
